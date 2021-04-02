@@ -4,7 +4,7 @@
 
 [i] Modificações sobre o código base não terá nenhum suporte, pois o prejeto ainda está no sendo iniciado.
 
-[i] ----------------------------------- [i]
+[i] ------------------------------------------------------------------------------ [i]
 
 # Instalação
 
@@ -24,6 +24,8 @@
 
 ## Licença 
 * [i] Apache License 2.0
+
+
 
 ## Agradecimentos
 

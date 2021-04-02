@@ -2,4 +2,3 @@ node_modules/
 src/config.js
 Lavalink/logs
 modules/database/db.js
-package-lock.json
