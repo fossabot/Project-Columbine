@@ -18,11 +18,13 @@
 
 # Futuras adições
 
-[i] Suporte para Língua inglesa
-[i] Opções de tradução [Embeds/Texto]
-[i] Lavalink [MusicPlayer] = ✔
+* [i] Suporte para Língua inglesa
+* [i] Opções de tradução [Embeds/Texto]
+* [i] Lavalink [MusicPlayer] = ✔
 
 ## Licença 
 * [i] Apache License 2.0
+
+## Agradecimentos
 
 * [i] 
