@@ -9,7 +9,9 @@ module.exports = (client) => {
         res.type('text/plain');
         res.send(`[Servidor API] de ${client.user.username}
         \n/statistics - Status básico do bot
-        \n/commands - Lista de comandos e suas categorias`);
+        \n/commands - Lista de comandos e suas categorias
+        \n/guilds/:guilID - Inforamções basica do servidor
+        \n/guilds/:guildID/members - Lista de todos os membros`);
     })
     //Estatísticas do Bot!
     .use('/statistics', require('./statistics.js')(client))

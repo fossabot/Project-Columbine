@@ -42,4 +42,4 @@ try {
 const token = client.config.token;
 client.login(token).catch(e => console.log(e.message));
 //Keep-alive.js para manter o bot 24/7 com auto ping externo
-//require('./modules/keep-alive/keep-alive');
+//require('./keep-alive/keep-alive');

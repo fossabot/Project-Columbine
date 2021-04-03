@@ -1,5 +1,5 @@
 const { Client, Collection } = require('discord.js'),
-    //{ Guild } = require('../modules/database/models'),
+    //{ Guild } = require('../database/models'),
     Enmap = require('enmap');
 
 module.exports = class PrCo extends Client {
@@ -9,7 +9,7 @@ module.exports = class PrCo extends Client {
         this.commands = new Enmap();
         this.cooldowns = new Enmap();
         //Configurando o arquivo da database
-        this.firebase = require('../modules/database/db')
+        this.firebase = require('../database/db')
 
           //Arquivo config.js
           this.config = require('../config')

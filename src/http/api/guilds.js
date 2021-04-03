@@ -5,6 +5,7 @@ const express = require('express')
 module.exports = function(client) {
     //Mostrar a lista de comadnos
     router.get('/:guildId', async (req, res) => {
+        if (client.config.debug) console.log(`IP: ${req.connection.remoteAddress.slice(7)} acesso a \`/commands/${req.params.command}\`.`);
         const guild = client.guilds.cache.get(req.params.guildId);
         if (guild) {
             const { id, name, icon, members: { size } } = guild;
@@ -18,6 +19,7 @@ module.exports = function(client) {
 
     //Pegando a listra de membros no servidor
     router.get('/:guildId/members', async (req, res) => {
+        if (client.config.debug) client.log(`IP: ${req.connection.remoteAddress.slice(7)} acessdo a \`/guilds/${req.params.guildId}/membros\`.`);
         const guild = client.guilds.cache.get(req.params.guildId);
         if (guild) {
             const members = guild.members.cache.map(member => ({

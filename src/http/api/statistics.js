@@ -5,6 +5,7 @@ const express = require('express')
 module.exports = function(client) {
     //Estatísticas da pagina
     router.get('/', async function(req, res) {
+        if (client.config.debug) console.log(`IP: ${req.connection.remoteAddress.slice(7)} acessdo a \`/statistics\`.`);
         res.status(200).json({
             guildCount: client.guilds.cache.size,
             userCount: client.guilds.cache.reduce((total,guild) => total + guild.memberCount, 0),
