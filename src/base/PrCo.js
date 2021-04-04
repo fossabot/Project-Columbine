@@ -7,7 +7,7 @@ module.exports = class PrCo extends Client {
         super(options);
         //comand handler
         this.commands = new Enmap();
-        this.cooldowns = new Enmap();
+        this.cooldowns = new Collection();
         //Configurando o arquivo da database
         this.firebase = require('../database/db')
 

@@ -23,3 +23,4 @@ const embed = new MessageEmbed()
     .setDescription('Lista foi embaralhada')
     message.channel.send(embed)
 };
+
