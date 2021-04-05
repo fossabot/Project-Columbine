@@ -11,6 +11,15 @@ const config = {
     },
     DiscordBotList: {
         DBL_key: '',
-    }
+    },
+    //Caso queira que o bot envie uma mensagem sempre que iniciar alterar de false para true
+    supportserver: {
+        serverID: '', //You server ID here
+        serverChannel: '' //You server channelID here
+    },
+    //Aviso de iniciamento
+    support: false,
+    //Para ajudar na correção de bugs!
+    debug: false, 
 }
 module.exports = config;

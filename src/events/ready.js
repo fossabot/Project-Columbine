@@ -1,5 +1,5 @@
 module.exports = async client => {
-    //Puxando os canais e guildas em que o bot está
+    //Puxando as estatísticas do bot
     console.log(
         `Bot iniciado com sucesso! ${client.user.tag} ${client.guilds.cache.reduce((total,guild) => total + guild.memberCount, 0)} usúarios, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.\n`
     );
@@ -37,4 +37,13 @@ module.exports = async client => {
       //Defina em MS 1seg = 1000ms
       setStatus();
       setInterval(() => setStatus(), 10000);
+        //Evento de enviar msg no ready
+        if (client.config.support) {
+        var msga = `Bot iniciado com sucesso! ${client.user.tag} ${client.guilds.cache.reduce((total,guild) => total + guild.memberCount, 0)} usúarios, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.\n`
+        var channel = client.guilds.cache.get(client.config.supportserver.serverID).channels.cache.get(client.config.supportserver.serverChannel)
+        setInterval(function() {
+            channel.send(msga);
+        }, 1000 * 60 * 60 * 60);
+        channel.send(msga);
     }
+}
