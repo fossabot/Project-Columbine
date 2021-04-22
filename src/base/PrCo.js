@@ -12,7 +12,7 @@ module.exports = class PrCo extends Client {
         this.firebase = require('../database/db')
 
           //Arquivo config.js
-          this.config = require('../config')
+          this.config = require('../config/config')
 
           //Atividade do bot
           this.Activity = [];

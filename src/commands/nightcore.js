@@ -16,8 +16,8 @@ exports.run = async (client, message, args) => {
         player.resetFilter();
         const msg = await message.channel.send(`Desligando o modo '\`NightCore\`', aguarde alguns segundos..`);
         const embed = new MessageEmbed()
-            .setDescription(`Modo '\`NightCore\` desligado.`);
-            await delay(9000);
+            .setDescription(`Modo '\`NightCore\`' desligado.`);
+            await delay(7500);
             return msg.edit('', embed);
     } else {
         player.setFilter({
@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
         const msg = await message.channel.send(`Ligando o modo '\`NightCore\`', aguarde alguns segundos..`);
         const embed = new MessageEmbed()
             .setDescription(`Modo '\`NightCore\`' ligado.`);
-            await delay(9000);
+            await delay(7500);
             return msg.edit('', embed);
     }
 }

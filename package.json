@@ -1,7 +1,7 @@
 {
-  "name": "battlebotv2.1",
-  "version": "2.1.0",
-  "description": "BattleBotv2.1",
+  "name": "project-columbine",
+  "version": "1.0.0",
+  "description": "Project-Columbine",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "canvas": "^2.7.0",
+    "chalk": "^4.1.0",
+    "dblapi.js": "^2.4.1",
     "discord.js": "^12.5.1",
     "enmap": "^5.8.4",
     "erela.js": "^2.3.2",
@@ -19,9 +22,11 @@
     "express": "^4.17.1",
     "firebase": "^8.3.0",
     "fs": "^0.0.2",
+    "genius-lyrics-api": "^3.0.6",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "node-fetch": "^2.6.1",
+    "os-utils": "0.0.14",
     "path": "^0.12.7",
     "unspam": "0.0.4",
     "ws": "^7.4.4"

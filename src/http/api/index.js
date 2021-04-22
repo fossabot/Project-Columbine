@@ -1,4 +1,5 @@
 //Puxando as Dependencias/Arquivos/Pastas Nescessarias
+const chalk = require("chalk");
 const express = require('express');
 const app = express();
 const PORT = 3000;
@@ -28,6 +29,9 @@ module.exports = (client) => {
     })
     //Iniciando o servidor
     .listen(PORT, () => {
-        console.log(`Estatísticas da [API] carregado na porta ${PORT}`);
-    });
+        console.log(chalk.greenBright("[HTTP API]"),`Estatísticas carregada na porta ${PORT}`);
+    })
+    .on('error', (err) => {
+		console.log(chalk.redBright("[HTTP ERROR]"), `Erro ao iniciar a API HTTP`);
+	});
 }

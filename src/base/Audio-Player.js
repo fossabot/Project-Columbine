@@ -39,6 +39,11 @@ module.exports = async (client) => {
         if (player.timeout != null) return clearTimeout(player.timeout);
     })
     .on('trackError', (player, track, payload) => {
+
+        //debug
+        if (client.config.debug) console.log(`Track error: ${payload.error} in guild: ${player.guild}.`);
+        //resetando os filtros
+        player.resetFilter();
         //Enviando a embed caso aconteça algum erro!
         const embed = new MessageEmbed()
         .setColor('#8b0000')
@@ -47,8 +52,10 @@ module.exports = async (client) => {
         if (channel) channel.send(embed).then(m => m.delete({ timeout: 15000 }));
     })
     .on('queueEnd', (player) => {
+        //modulo 24/7
+        if (player.twentyFourSeven) return;
         //Enviado a Embed quando a musica acabar ou o bot ficar sozinho no canal
-        setTimeout(() => {
+        player.timeout = setTimeout(() => {
             const embed = new MessageEmbed()
                 .setDescription(`Saí do canal de voz **${client.channels.cache.get(player.voiceChannel).name}** porque fiquei inativo por muito tempo. Se você for um membro Premium, você pode desativar isso digitando prefixo24/7.`);
             const channel = client.channels.cache.get(player.textChannel);

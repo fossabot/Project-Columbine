@@ -8,7 +8,7 @@ module.exports = async (client, guild) => {
     let setPrefix2 = await setPrefix.once('value')
     if (setPrefix2.val() == null) {
     db.ref(`Configurações/Servidores/${guild.id}/Prefixo`).set({
-      prefixo: client.config.prefix,
+      prefixo: client.config.defaultSettings.prefix,
       servidor: guild.id
     })
   }

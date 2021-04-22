@@ -1,45 +1,34 @@
-//Puxando as dependencias..
-const Client = require('./base/PrCo.js')
-const fs = require('fs');
-const firebase = require('firebase')
-const client = new Client();
-//Inicializador do banco de dados
-const mdbf = {
-  apiKey: client.firebase.api_Key,
-  databaseURL: client.firebase.database_URL,
-  appID: client.firebase.app_Id
-}
-firebase.initializeApp(mdbf);
-//Carregando a pasta events
-fs.readdir("./src/events/", (err, files) => {
-    if (err) return console.error(err);
-    files.forEach(file => {
-      const event = require(`./events/${file}`);
-      let eventName = file.split(".")[0];
-      client.on(eventName, event.bind(null, client));
-      console.log(`${eventName} Iniciado.`)
-    });
-  });
-//Carregando as pastas de comandos
+const chalk = require("chalk"),
+   pingport = require("./helpers/pingport"),
+   { MessageEmbed, ShardingManager } = require('discord.js');
 
-fs.readdir("./src/commands/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/${file}`);
-    let commandName = file.split(".")[0];
-    client.commands.set(commandName, props);
-  });
+const shard = new ShardingManager("./src/PrCo.js", {
+  token: require('./config/config').token,
+  autoSpawn: true,
+  totalShards: 'auto'
 });
-//Ligando o Player de Musica
-try {
-    require('./base/Audio-Player')(client);
-} catch (e) {
-  console.log(e)
-}
 
-//Processo para ligar o bot
-const token = client.config.token;
-client.login(token).catch(e => console.log(e.message));
-//Keep-alive.js para manter o bot 24/7 com auto ping externo
-//require('./keep-alive/keep-alive');
+//var channel = client.guilds.cache.get(require('./config/config').SupportServer.serverID).channels.cache.get(require('./config/config').SupportServer.serverChannel)
+
+shard.on("shardCreate", async (shard) => {
+  console.log(chalk.yellowBright("[SHARD LAUNCHED]"), `Shard ${shard.id} has launched.`);
+
+  let shardEmbed = new MessageEmbed()
+    .setTitle(`🟢 **Shard ${shard.id}** has launched.`)
+    .setColor("RANDOM")
+    .setTimestamp();
+});
+
+shard.on("message", async (shard, message) => {
+  console.log(chalk.yellowBright(`[SHARD ${shard.id}]`), `${message._eval} : ${message._result}`);
+
+  let shardOnEmbed = new MessageEmbed()
+    .setTitle(`🟢 **Shard ${shard.id}** has sent a message.`)
+    .addField(`Message Eval`, message._eval, true)
+    .addField(`Message Result`, message._result, true)
+    .setColor("RANDOM")
+    .setTimestamp();
+});
+
+pingport.init();
+shard.spawn();

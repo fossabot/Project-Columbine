@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
 		});
 	} catch (err) {
 		if (message.deletable) message.delete();
-		console.log(`O Comando: '${this.help.name}' ocorreu o seguinto erro: ${err.message}.`);
+		console.log(`O Comando: '${this.name}' ocorreu o seguinto erro: ${err.message}.`);
 		return message.channel.send(`Erro desconhecido`, err.message)
 	}
 

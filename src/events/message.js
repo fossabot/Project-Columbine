@@ -1,10 +1,14 @@
 //Puxandos os modulos pastas e arquivos nescessarios
 const { MessageEmbed, Collection } = require('discord.js'),
-    { now } = require('moment'),
     firebase = require('firebase'),
-    db = firebase.database();
+    db = firebase.database(),
+    moment = require('moment')
+    require("moment-duration-format");
 
 module.exports = async (client, message) => {
+    //recordando as msg que o bot enviar
+    client.messagesSent++;
+    
     if(message.author.bot) return;
     if(message.channel.type === 'DM') return;
 
@@ -22,10 +26,11 @@ module.exports = async (client, message) => {
 
             .setAuthor(client.user.username, client.user.displayAvatarURL({ format: 'png' }))
 			.setThumbnail(client.user.displayAvatarURL({ format: 'png' }))
-            .setTitle('Prefixo')
-            .setDescription(`Meu Prefixo nesse servidor é \`${prefix}\`, Use \`${prefix}ajuda\` Para Ver Meus Comandos!`)
+            .setTitle('About me')
+            .setDescription([`Meu Prefixo nesse servidor é \`${prefix}\`, Use \`${prefix}ajuda\` Para Ver Meus Comandos!`,
+                            `Estou online há ${moment.duration(client.uptime).format('d[days] h[hrs] m[mins] s[segs]')}, com ${client.guilds.cache.reduce((total,guild) => total + guild.memberCount, 0)} usuários e em ${client.guilds.cache.size} servidores!!`].join('\n\n'))
         message.channel.send(embed)
-    };
+    }; 
     //Agora puxando a handler para executar o comando
     const args = message.content
         .slice(prefix.length)
@@ -50,14 +55,15 @@ module.exports = async (client, message) => {
             return message.channel.send({ embed: { color: message.member.displayHexColor, description:`Você deve esperar ${timeleft2} segundos, para usar o comando novamente!!`}}).then(m => m.delete({ timeout:4000 }));
         }
     }
-
     //Puxando os iniciadores dos comandos
+    client.commandsUsed++;
+    if (client.config.debug) console.log(`Comando: ${cmd} foi usado por ${message.author.tag}${!message.guild ? '' : ` no servidor: ${message.guild.id}`}.`);
+    
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     let command = client.commands.get(cmd);
-    if (command) {command.run(client, message, args);
-        timestamps.set(message.author.id, now)
-        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount)
-    }
-
-
+    if (command) {
+        command.run(client, message, args);
+        timestamps.set(message.author.id, now);
+        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+    } 
 }
