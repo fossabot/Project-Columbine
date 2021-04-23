@@ -4,5 +4,8 @@ const { MessageEmbed } = require("discord.js"),
 module.exports = async (client, id) => {
   console.log(chalk.yellowBright("[SHARD RECONNECTING]"), `Shard ${id} is reconnecting.`);
   
-
+  let reconnectEmbed = new MessageEmbed()
+    .setTitle(`🟡 **Shard ${id}** Reconectado.`)
+    .setColor("RANDOM")
+    .setTimestamp();
 };

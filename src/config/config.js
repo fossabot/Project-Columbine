@@ -1,6 +1,6 @@
 const config = {
     ownerID: '583676051838861342',
-    token: 'NzY4MDAwNTMwMzYxODc2NDkw.X46GOw.7DUEK_5lqe6G5wE907MlAu2R5VE',
+    token: 'NzY4MDAwNTMwMzYxODc2NDkw.X46GOw.SZY9KMYMUG5p4Oc7FaalSMIJ19Y',
     clientSecret: 'NB-9I81U4HKMpLtd8pc8pVUnugA3EeKK',
     clientID: '768000530361876490',
     //Pegando as keys das API'S

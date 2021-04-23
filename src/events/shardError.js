@@ -6,5 +6,11 @@ module.exports = async (client, shardID, error) => {
 
   client.utils.sentry.captureException(error);
 
+  let errorEmbed = new MessageEmbed()
+    .setTitle(`🟡 **Shard ${shardID}** Error:`)
+    .addField("Shard ID:", shardID)
+    .addField("Error", error)
+    .setColor("RANDOM")
+    .setTimestamp();
 
 };

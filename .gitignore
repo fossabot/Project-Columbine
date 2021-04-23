@@ -1,4 +1,4 @@
 node_modules/
-src/config.js
+src/config/config.js
 Lavalink/logs
-modules/database/db.js
+src/database/db.js
