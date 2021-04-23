@@ -38,11 +38,11 @@ const token = client.config.token;
 client.login(token).catch(e => console.log(e.message));
 
 //caso aconteça algum erro o bot não desligar
-process.on('unhandledRejection', err => {
+/*process.on('unhandledRejection', err => {
   console.log(`Erro na promisse: ${err.message},`);
 
   //Mostrar o erro com o debug ativo
   if (client.config.debug) console.log(err);
-});
+});*/
 //Keep-alive.js para manter o bot 24/7 com auto ping externo
 //require('./keep-alive/keep-alive');

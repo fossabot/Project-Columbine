@@ -4,11 +4,23 @@
   "description": "Project-Columbine",
   "main": "src/index.js",
   "scripts": {
-    "test": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Discord",
+    "Bot",
+    "Music",
+    "Lavalink",
+    "Lyrics",
+    "Brasil",
+    "JavaScript",
+    "NodeJs",
+    "HTTP",
+    "PrCo.js",
+    "Shards"
+  ],
+  "author": "https://github.com/HellpMe",
   "license": "ISC",
   "dependencies": {
     "canvas": "^2.7.0",

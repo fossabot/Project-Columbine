@@ -13,6 +13,7 @@ module.exports = class PrCo extends Client {
 
           //Arquivo config.js
           this.config = require('../config/config')
+          this.webhooks = require('../config/webhooks')
 
           //Atividade do bot
           this.Activity = [];
