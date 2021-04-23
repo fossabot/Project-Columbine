@@ -33,7 +33,7 @@ module.exports = async (client, message) => {
     cooldown.add(message.author.id);
     setTimeout(() => {
         cooldown.delete(message.author.id)
-    }, 100)
+    }, 60000)
         }
     }
 }
