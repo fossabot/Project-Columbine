@@ -1,6 +1,6 @@
 # Project-Columbine, Discord bot with Dashboard
 
-![](https://hellpme.github.io/images/ProfileHelpMe.gif)
+![](//)
 
 ## `1º` **|** Self-Host:
 Caso queira fazer Self-Host do projeto iremos precisar dos seguintes recursos.
@@ -25,6 +25,15 @@ Ao todo você irá ter que configurar os seguintes arquivos.
 ```shell
 ? npm run start:music
 ```
+## Requisitos para execução do Lavalink-LocalHost!
+- Recomendado, [JavaJDK](https://www.oracle.com/java/technologies/javase/jdk13-archive-downloads.html) or [Java-JDK²](https://jdk.java.net/16/), requisito minimo JavaJDK 13+
+
+
+### Opcional! Servidor Lavalink-Heroku 24/7
+- Caso queira usar um servidor de musica `não usando o interno`, recomendo que leia este repositorio explicando passa-a-passo, em caso de duvidas entre em contato via [Issues](https://github.com/HellpMe/Lavalink-Heroku-24-7/issues).
+- [Lavalink-Heroku-24/7](https://github.com/HellpMe/Lavalink-Heroku-24-7).
+
+
 ## `4º` **|** Links:
 🔗 Esses são os nossos únicos links. Então preste bastante atenção !!
 > - [Twitter](https://twitter.com/CyberPlank_2077)
