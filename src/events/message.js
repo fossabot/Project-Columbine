@@ -44,7 +44,8 @@ module.exports = async (client, message) => {
     }
     var now = Date.now();
     const timestamps = client.cooldowns.get(cmd)
-    const cooldownAmount = (3000);
+    //definindo o tempo de cd, 1000ms = 1seg
+    const cooldownAmount = (4000);
         
     if (timestamps.has(message.author.id)) {
         const expirationTime = timestamps.get(message.author.id) + cooldownAmount;

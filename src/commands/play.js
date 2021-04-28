@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
 		});
 	} catch (err) {
 		if (message.deletable) message.delete();
-		console.log(`O Comando: '${this.name}' ocorreu o seguinto erro: ${err.message}.`);
+		console.log(`O Comando: 'play' ocorreu o seguinto erro: ${err.message}.`);
 		return message.channel.send(`Erro desconhecido`, err.message)
 	}
 
@@ -46,7 +46,7 @@ exports.run = async (client, message, args) => {
 	if (args.length == 0) {
 		//Verificando o tipo de arquivo que foi enviado para reprodução
 		const filesTypes = ['mp3', 'mp4', 'wav', 'm4a', 'webm', 'aac', 'ogg'];
-		if (messsage.attachments.size > 0) {
+		if (message.attachments.size > 0) {
 			const url = message.attachments.first().url;
 			for (let i = 0; i < filesTypes.length; i++) {
 				if (url.endsWith(filesTypes[i])) {

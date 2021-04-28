@@ -5,4 +5,4 @@ const fetch = require('node-fetch');
 //descomentando-o na index.js
 
 
-setInterval(() => fetch(`http://localhost:3000`), 5 * 60 * 1000);
+setInterval(() => fetch(`https://localhost:3000`), 5 * 60 * 1000);

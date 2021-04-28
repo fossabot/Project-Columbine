@@ -4,6 +4,13 @@ const { MessageEmbed } = require('discord.js'),
 
 
 exports.run = async (client, message, args) => {
+    	/*   //Verificando se há o cargo de DJ no servidor
+    if (message.guild.roles.cache.get('DJ')) {
+        if (!message.member.roles.cache.has('DJ')) {
+            return message.channel.send(`Você não tem o cargo de 'DJ' Para usar esses comandos!!`).then(m => m.delete({ timeout: 10000 }));
+        }
+    } */
+
     //Verificando se há musicas na fila/Reproduzidas
     const player = client.manager.players.get(message.guild.id);
     if (!player) return message.channel.send(`Não há musicas sendo reproduzidas!!`).then(m => m.delete({ timeout: 5000 }));
@@ -31,7 +38,7 @@ exports.run = async (client, message, args) => {
         const msg = await message.channel.send(`Ligando o modo '\`NightCore\`', aguarde alguns segundos..`);
         const embed = new MessageEmbed()
             .setDescription(`Modo '\`NightCore\`' ligado.`);
-            await delay(7500);
+            await delay(7000);
             return msg.edit('', embed);
     }
 }

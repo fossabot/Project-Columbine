@@ -1,5 +1,4 @@
 const { Client, Collection } = require('discord.js'),
-    //{ Guild } = require('../database/models'),
     Enmap = require('enmap');
 
 module.exports = class PrCo extends Client {

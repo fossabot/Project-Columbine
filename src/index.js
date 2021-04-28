@@ -1,51 +1,52 @@
-const chalk = require("chalk"),
-   pingport = require("./helpers/pingport"),
-   { Webhook_Channel_ID, Webhook_Token } = require('./config/webhooks'),
-   { MessageEmbed, ShardingManager, WebhookClient } = require('discord.js');
+/* eslint-disable no-undef */
+const chalk = require('chalk'),
+	pingport = require('./helpers/pingport'),
+	{ Webhook_Channel_ID, Webhook_Token } = require('./config/webhooks'),
+	{ MessageEmbed, ShardingManager, WebhookClient } = require('discord.js');
 
 const webhookClient = new WebhookClient(
-  Webhook_Channel_ID,
-  Webhook_Token
+	Webhook_Channel_ID,
+	Webhook_Token,
 );
 
-const shard = new ShardingManager("./src/PrCo.js", {
-  token: require('./config/config').token,
-  autoSpawn: true,
-  totalShards: 'auto'
+const shard = new ShardingManager('./src/PrCo.js', {
+	token: require('./config/config').token,
+	autoSpawn: true,
+	totalShards: 'auto',
 });
 
-shard.on("shardCreate", async (shard) => {
-  console.log(chalk.yellowBright("[SHARD LAUNCHED]"), `Shard ${shard.id} has launched.`);
+shard.on('shardCreate', async (shard) => {
+	console.log(chalk.yellowBright('[SHARD LAUNCHED]'), `Shard ${shard.id} has launched.`);
 
-  let shardEmbed = new MessageEmbed()
-    .setTitle(`🟢 **Shard ${shard.id}** foi lançado.`)
-    .setColor("RANDOM")
-    .setTimestamp();
+	const shardEmbed = new MessageEmbed()
+		.setTitle(`🟢 **Shard ${shard.id}** foi lançado.`)
+		.setColor('RANDOM')
+		.setTimestamp();
 
-    //Webhook manager
-await webhookClient.send({
-  username: "Shard Manager",
-  avatarURL: "https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg",
-   embeds: [shardEmbed]
-  });
+	// Webhook manager
+	await webhookClient.send({
+		username: 'Shard Manager',
+		avatarURL: 'https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg',
+		embeds: [shardEmbed],
+	});
 });
 
-shard.on("message", async (shard, message) => {
-  console.log(chalk.yellowBright(`[SHARD ${shard.id}]`), `${message._eval} : ${message._result}`);
+shard.on('message', async (shard, message) => {
+	console.log(chalk.yellowBright(`[SHARD ${shard.id}]`), `${message._eval} : ${message._result}`);
 
-  let shardOnEmbed = new MessageEmbed()
-    .setTitle(`🟢 **Shard ${shard.id}** enviou uma mensagem.`)
-    .addField(`Message Eval`, message._eval, true)
-    .addField(`Message Result`, message._result, true)
-    .setColor("RANDOM")
-    .setTimestamp();
+	const shardOnEmbed = new MessageEmbed()
+		.setTitle(`🟢 **Shard ${shard.id}** enviou uma mensagem.`)
+		.addField('Message Eval', message._eval, true)
+		.addField('Message Result', message._result, true)
+		.setColor('RANDOM')
+		.setTimestamp();
 
-  //Webhook Manager
-await webhookClient.send({
-  username: "Shard Manager",
-  avatarURL: "https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg",
-  embeds: [shardOnEmbed]
-  });
+	// Webhook Manager
+	await webhookClient.send({
+		username: 'Shard Manager',
+		avatarURL: 'https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg',
+		embeds: [shardOnEmbed],
+	});
 });
 
 pingport.init();
