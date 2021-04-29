@@ -4,7 +4,7 @@ server: # REST and WS server
 
 lavalink:
   server:
-    password: "youshallnotpass"
+    password: "PrCoJs"
     playerUpdateInterval: 1 # How frequently to send player updates to clients, in seconds
     koe:
       useEpoll: true
@@ -23,7 +23,7 @@ lavalink:
     lavaplayer:
       nonAllocating: false # Whether to use the non-allocating frame buffer.
       frameBufferDuration: 5000 # The frame buffer duration, in milliseconds
-      youtubePlaylistLoadLimit: 6 # Number of pages at 100 each
+      youtubePlaylistLoadLimit: 10 # Number of pages at 100 each
       gc-warnings: true
       youtubeSearchEnabled: true
       soundcloudSearchEnabled: true
