@@ -2,9 +2,9 @@ const Discord = require("discord.js")
 const client = new Discord.Client()
 
 exports.run = async (client, message, args) => {
-   /* if (!['583676051838861342'].includes(message.author.id)) {
+    if (!client.config.ownerID.includes(message.author.id)) {
     return message.channel.send(`apenas meu desenvolvedor pode utilizar`)
-    }*/
+    }
     let code = args.slice(0).join(" ");
     
         try {

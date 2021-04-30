@@ -1,11 +1,13 @@
 const { Structure } = require('erela.js');
 
 module.exports = Structure.extend('Player', Player => {
-	class boneeplayer extends Player {
+	class player extends Player {
 		constructor(...args) {
 			super(...args);
 			this.musicTrivia = false;
 			this.speed = 1;
+			this.timeout = null;
+			this.twentyFourSeven = false;
 		}
 
 		// adicionando os filtros
@@ -28,7 +30,7 @@ module.exports = Structure.extend('Player', Player => {
 			return this;
 		}
 
-		// Setando a velocidade do player
+		// Alterar a velocidade de reprodução
 		setSpeed(value) {
 			this.speed = value;
 			this.node.send({
@@ -39,5 +41,5 @@ module.exports = Structure.extend('Player', Player => {
 			return this;
 		}
 	}
-	return boneeplayer;
+	return player;
 });

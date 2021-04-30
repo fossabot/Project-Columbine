@@ -6,7 +6,7 @@ const client = new Client();
 //Carregando a pasta events
 fs.readdir("./src/events/", (err, files) => {
     if (err) return console.error(err);
-    console.log(chalk.magenta("Carregando Eventos..."))
+    console.log(chalk.magenta("[-] Carregando Eventos..."));
     files.forEach(file => {
       const event = require(`./events/${file}`);
       let eventName = file.split(".")[0];
@@ -14,19 +14,24 @@ fs.readdir("./src/events/", (err, files) => {
     });
     console.log(chalk.green(`[+] Eventos Carregados!!`));
   });
-//Carregando as pastas de comandos
 
-fs.readdir("./src/commands/", (err, files) => {
+//Carregando as pastas de comandos
+fs.readdir("./src/commands/", (err, dirs) => {
   if (err) return console.error(err);
-  console.log(chalk.magenta("Carregando Comandos..."))
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/${file}`);
-    let commandName = file.split(".")[0];
-    client.commands.set(commandName, props);
+  dirs.forEach(dir => {
+    fs.readdir(`./src/commands/${dir}/`, (err, files) => {
+      files.forEach(file => {
+        if (!file.endsWith(".js")) return;
+        let props = require(`./commands/${dir}/${file}`);
+        let commandName = file.split(".")[0];
+        client.commands.set(commandName, props);
+      });
+    });
   });
+  console.log(chalk.magenta("[-] Carregando Comandos..."));
   console.log(chalk.green(`[+] Comandos Carregados!!`));
 });
+
 //Ligando o Player de Musica
 try {
     require('./base/Audio-Player')(client);
