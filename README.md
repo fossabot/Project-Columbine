@@ -17,6 +17,10 @@ Ao todo você irá ter que configurar os seguintes arquivos.
 
 ## `3º` **|** Execuções:
 
+### 🔌 Instalação dos modulos
+```shell 
+? npm i
+```
 ### 🔌 Inicialização 1º Passo, iniciar o bot:
 ```shell
 ? node .
