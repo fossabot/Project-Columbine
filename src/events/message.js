@@ -1,3 +1,4 @@
+/* eslint-disable no-self-assign */
 //Puxandos os modulos pastas e arquivos nescessarios
 const { MessageEmbed, Collection } = require('discord.js'),
     firebase = require('firebase'),
@@ -10,12 +11,12 @@ module.exports = async (client, message) => {
     client.messagesSent++;
     
     if(message.author.bot) return;
-    if(message.channel.type === 'DM') return;
-
+    if(message.channel.type === 'dm') return message.channel.send({ embed:{ color: 'RANDOM', description:`Meus comandos podem ser usado apenas em servidores!` } }); 
+    
     //Puxando do banco de dados o prefixo!
     let prefix = await db.ref(`Configurações/Servidores/${message.guild.id}/Prefixo`).once('value')
     prefix = prefix.val().prefixo
-    
+                
     //Puxando o prefixo do arquivo config.json
     if(!prefix) prefix = prefix;
 
@@ -30,7 +31,7 @@ module.exports = async (client, message) => {
             .setDescription([`Meu Prefixo nesse servidor é \`${prefix}\`, Use \`${prefix}ajuda\` Para Ver Meus Comandos!`,
                             `Estou online há ${moment.duration(client.uptime).format('d[days] h[hrs] m[mins] s[segs]')}, com ${client.guilds.cache.reduce((total,guild) => total + guild.memberCount, 0)} usuários e em ${client.guilds.cache.size} servidores!!`].join('\n\n'))
         message.channel.send(embed)
-    }; 
+    } 
     //Agora puxando a handler para executar o comando
     const args = message.content
         .slice(prefix.length)
