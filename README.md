@@ -42,6 +42,7 @@ Ao todo você irá ter que configurar os seguintes arquivos.
 🔗 Esses são os nossos únicos links. Então preste bastante atenção !!
 > - [Twitter](https://twitter.com/CyberPlank_2077)
 > - [Github](https://github.com/HellpMe)
+> - [Servidor de Suporte](https://discord.tredux.xyz)
 ## `5º` **|** Apoios:
 <table>
   <tr>

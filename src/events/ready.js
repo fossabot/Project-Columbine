@@ -38,7 +38,24 @@ module.exports = async client => {
       //Defina o tempo que deseja para que os status alternem entre-si
       //Defina em MS 1seg = 1000ms
       setStatus();
-      setInterval(() => setStatus(), 10000);
+      setInterval(() => setStatus(), 100000);
+
+      //Mudando o Avatar do bot de tempos em tempos
+      //Você pode colocar quantos quiser, porem vou adicionar apenas 3
+      var avatars = [
+          "https://hellpme.github.io/assets/apoios-github/CyberPlank_2077.jpg",
+          "https://hellpme.github.io/assets/apoios-github/TvKes.png",
+          "https://hellpme.github.io/assets/apoios-github/Nicaksks.jpg",
+      ];
+
+      function setAvatars() {
+          var altavatars = avatars[Math.floor(Math.random() * avatars.length)]
+          client.user.setAvatar(altavatars).catch((err) => {
+            console.error(err);//caso coloque para ele ficar trocando rapido de avatar, provavelmente aparecerá erros avisando que está muito rapido
+        });
+      }
+      setAvatars();
+      setInterval(() => setAvatars(), 20 * 60000);
 
         //Evento de enviar msg no servidor de suporte informando sobre o bot
         if (client.config.support) {
