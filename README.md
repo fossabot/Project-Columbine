@@ -30,7 +30,7 @@ Ao todo você irá ter que configurar os seguintes arquivos.
 ? npm run start:music
 ```
 ## Requisitos para execução do Lavalink-LocalHost!
-- Recomendado, [JavaJDK](https://www.oracle.com/java/technologies/javase/jdk13-archive-downloads.html) or [Java-JDK²](https://jdk.java.net/16/), requisito minimo JavaJDK 13+
+- [JavaJDK](https://www.oracle.com/java/technologies/javase/jdk13-archive-downloads.html) or [Java-JDK²](https://adoptopenjdk.net/), requisito minimo JavaJDK 13+
 
 
 ### Opcional! Servidor Lavalink-Heroku 24/7
