@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 const chalk = require('chalk'),
 	pingport = require('./helpers/pingport'),
-	{ Webhook_Channel_ID, Webhook_Token } = require('./config/webhooks'),
+	{ Webhook_ID, Webhook_Token } = require('./config/webhooks'),
 	{ MessageEmbed, ShardingManager, WebhookClient } = require('discord.js');
 
 const webhookClient = new WebhookClient(
-	Webhook_Channel_ID,
+	Webhook_ID,
 	Webhook_Token,
 );
 

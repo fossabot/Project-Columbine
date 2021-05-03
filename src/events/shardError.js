@@ -15,7 +15,7 @@ module.exports = async (client, shardID, error) => {
 
     //Webhook manager
     const webhookClient = new WebhookClient(
-      client.webhooks.Webhook_Channel_ID,
+      client.webhooks.Webhook_ID,
       client.webhooks.Webhook_Token
     );
   
@@ -24,4 +24,4 @@ module.exports = async (client, shardID, error) => {
       avatarURL: "https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg",
       embeds: [errorEmbed]
     });
-  };;
+  };

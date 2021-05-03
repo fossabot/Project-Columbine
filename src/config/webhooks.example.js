@@ -6,6 +6,7 @@ const webhooks = {
     
     //webhooks dos erro dos shards
     Error_Webhook_ID: "", //webhook id
+    Error_Webhook_Channel_ID: "",
     Error_Webhook_Token: "", //webhook token
 };
 module.exports = webhooks;

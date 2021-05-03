@@ -12,7 +12,7 @@ module.exports = async (client, id, replayedEvents) => {
 
     //Webhook manager
     const webhookClient = new WebhookClient(
-      client.webhooks.Webhook_Channel_ID,
+      client.webhooks.Webhook_ID,
       client.webhooks.Webhook_Token
     );
   
