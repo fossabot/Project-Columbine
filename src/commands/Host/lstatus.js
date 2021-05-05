@@ -17,8 +17,6 @@ exports.run = async (client, message,) => {
     const systemLoad = (cpu.systemLoad * 100).toFixed(2);
     const lavalinkLoad = (cpu.lavalinkLoad * 100).toFixed(2);
 
-	//const uptime = prettyMs(stats.uptime, { verbose: true, secondsDecimalDigits: 0 });
-
     const embed = new MessageEmbed()
     .setAuthor('Status lavalink')
     .addField('Players Ativos', `\`\`\`${playingPlayers} Tocando agora / ${players} Players\`\`\``)
