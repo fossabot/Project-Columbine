@@ -37,14 +37,14 @@ module.exports = async (client, message) => {
         .slice(prefix.length)
         .trim()
         .split(/ +/g);
-    let cmd = args.shift().toLowerCase();
+    let command = args.shift().toLowerCase();
 
     //Adicionando cooldown nos comandos
-     if (!client.cooldowns.has(cmd)) {
-        client.cooldowns.set(cmd, new Collection());
+     if (!client.cooldowns.has(command)) {
+        client.cooldowns.set(command, new Collection());
     }
     var now = Date.now();
-    const timestamps = client.cooldowns.get(cmd)
+    const timestamps = client.cooldowns.get(command)
     //definindo o tempo de cd, 1000ms = 1seg
     const cooldownAmount = (4000);
         
@@ -62,9 +62,9 @@ module.exports = async (client, message) => {
     if (client.config.debug) console.log(`Comando: ${cmd} foi usado por ${message.author.tag}${!message.guild ? '' : ` no servidor: ${message.guild.id}`}.`);
     
     if (!message.content.startsWith(prefix) || message.author.bot) return;
-    let command = client.commands.get(cmd);
-    if (command) {
-        command.run(client, message, args);
+    let cmd = client.commands.get(command);
+    if (cmd) {
+        cmd.run(client, message, args);
         timestamps.set(message.author.id, now);
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
     } 

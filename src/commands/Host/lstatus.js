@@ -1,5 +1,6 @@
 //Puxando as Dependencias/Pastas/Arquivos nescessarios
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js'),
+moment = require('moment');
 
 exports.run = async (client, message,) => {
 
@@ -16,33 +17,14 @@ exports.run = async (client, message,) => {
     const systemLoad = (cpu.systemLoad * 100).toFixed(2);
     const lavalinkLoad = (cpu.lavalinkLoad * 100).toFixed(2);
 
-//    const clientUptime = uptime(uptime);
+	//const uptime = prettyMs(stats.uptime, { verbose: true, secondsDecimalDigits: 0 });
 
     const embed = new MessageEmbed()
     .setAuthor('Status lavalink')
     .addField('Players Ativos', `\`\`\`${playingPlayers} Tocando agora / ${players} Players\`\`\``)
     .addField('Memoria', `\`\`\`Alocada: ${allocated} MB\nUsada: ${used} MB\nLivre: ${free} MB\nReservada: ${reservable} MB\`\`\``)
     .addField('CPU', `\`\`\`Cores: ${cpu.cores}\nUso do sistema: ${systemLoad}%\nUso do lavalink: ${lavalinkLoad}%\`\`\``)
-//    .addField('Uptime', `\`\`\`${clientUptime}\`\`\``)
+    .addField('Uptime', `\`\`\`${moment.duration(uptime).format('D [days], H [hrs], m [mins], s [secs]', { trim: 'both mid' })}\`\`\``)
     .setTimestamp(Date.now());
         return msg.edit('', embed);
 };
-/*
-        	uptime(time); {
-		const calculations = {
-			week: Math.floor(time / (1000 * 60 * 60 * 24 * 7)),
-			day: Math.floor(time / (1000 * 60 * 60 * 24)),
-			hour: Math.floor((time / (1000 * 60 * 60)) % 24),
-			minute: Math.floor((time / (1000 * 60)) % 60),
-			second: Math.floor((time / 1000) % 60),
-		};
-
-		let str = '';
-
-		for (const [key, val] of Object.entries(calculations)) {
-			if (val > 0) str += `${val} ${key}${val > 1 ? 's' : ''} `;
-		}
-
-		return str;
-	};
-*/
