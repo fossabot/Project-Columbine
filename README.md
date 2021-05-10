@@ -49,6 +49,6 @@ Ao todo você irá ter que configurar os seguintes arquivos.
      <td align="center"><a href="https://github.com/HellpMe"><img src="https://hellpme.github.io/assets/apoios-github/CyberPlank_2077.jpg" alt=""/><br /><sub><b>HellpMe</b></sub></a><br /><a href="https://github.com/HellpMe/Project-Columbine/commits/master" title="Coder">💻</a> <a href="#maintenance-HellpMe" title="Maintenance">🚧</a><a href="#design-HellpMe" title="Design">🎨</a></td>
     <td align="center"><a href="https://www.twitch.tv/tvkes"><img src="https://hellpme.github.io/assets/apoios-github/TvKes.png"alt=""/><br /><sub><b>TvKes</b></sub></a><br /><a href="https://www.behance.net/lucasr-dsgn" title="Design">🎨</a></td>
     <td align="center"><a href="https://twitter.com/nicaksks"><img src="https://hellpme.github.io/assets/apoios-github/Nicaksks.jpg"alt=""/><br /><sub><b>Nicaksks</b></sub></a><br /><a href="#support-Nicaksks" title="Support">🆘</a></td>
-        <td align="center"><a href="https://github.com/vSilva-gb"><img src="https://hellpme.github.io/assets/apoios-github/vsilva-gb.png"alt=""/><br /><sub><b>vSilva-gb</b></sub></a><br /><a href="#support-vSilva-gb" title="Bug Hunter">🆘</a></td>
+        <td align="center"><a href="https://github.com/vSilva-gb"><img src="https://hellpme.github.io/assets/apoios-github/vSilva-gb.png"alt=""/><br /><sub><b>vSilva-gb</b></sub></a><br /><a href="#support-vSilva-gb" title="Bug Hunter">🆘</a></td>
   </tr>
 </table>
