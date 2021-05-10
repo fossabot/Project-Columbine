@@ -1,4 +1,5 @@
-const { Client, Collection } = require('discord.js');
+const { Client, Collection } = require('discord.js'),
+    { GuildSchema } = require('../database/models');
 
 module.exports = class PrCo extends Client {
     constructor(options) {
@@ -25,38 +26,58 @@ module.exports = class PrCo extends Client {
           this.messagesSent = 0;
           this.commandsUsed = 0;
     }
-          //Encontrar o ID do user na API do discord
-          async getUser(id) {
-              try {
-                  const user = await this.users.fetch(id);
-                  return user;
-              } catch (err) {
-                  console.log(err.message);
-                  return false;
-              }
-          }
-
-          //Pegando os canais em cache
-          async getChannel(id) {
+        //Quando bot entrar um servidor adicionar as configs
+        async CreateGuild(settings) {
             try {
-                const channel = await this.channels.cache.get(id);
-                return channel;
+                const newGuild = new GuildSchema(settings);
+                return await newGuild.save();
             } catch (err) {
-                console.log(err.message);
+                if (this.config.debug) console.log(err.message);
                 return false;
             }
         }
+        // Apagando as configs caso remova o bot
+        async DeleteGuild(guild) {
+		try {
+			await GuildSchema.findOneAndRemove({ guildID: guild.id });
+			return true;
+		} catch (err) {
+			if (this.config.debug) console.log(err.message);
+			return false;
+		}
+	}
+        //Encontrar o ID do user na API do discord
+        async getUser(id) {
+          try {
+              const user = await this.users.fetch(id);
+              return user;
+             } catch (err) {
+              console.log(err.message);
+              return false;
+           }
+          }
+
+        //Pegando os canais em cache
+        async getChannel(id) {
+          try {
+            const channel = await this.channels.cache.get(id);
+            return channel;
+            } catch (err) {
+            console.log(err.message);
+            return false;
+           }
+          }
 
         //Setando a atividade do bot
         async SetStatus(status = 'online') {
-            try {
-                await this.user.setStatus(status);
-                return;
-            } catch (err) {
-                console.log(err.message);
-                return false;
-            }
-        }
+          try {
+        await this.user.setStatus(status);
+            return;
+        } catch (err) {
+            console.log(err.message);
+            return false;
+          }
+         }
 
         //Setando a atividade do bot
         SetActivity(array = [], type = 'STREAMING') {
