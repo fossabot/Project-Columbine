@@ -2,8 +2,13 @@
 const { MessageEmbed } = require('discord.js'),
 moment = require('moment');
 
-exports.run = async (client, message,) => {
-
+module.exports = {
+    name: 'lavalink',
+    aliases: ['lstatus'],
+    category: 'Host',
+    description: 'Veja as informações do Servidor Lavalink!',
+    
+run: async (client, message, args) => {
     const msg = await message.channel.send('Puxando todas as informações do lavalink, aguarde..');
 
     const {	memory,	cpu,	uptime,	playingPlayers,	players } = client.manager.nodes.first().stats;
@@ -25,4 +30,5 @@ exports.run = async (client, message,) => {
     .addField('Uptime', `\`\`\`${moment.duration(uptime).format('D [days], H [hrs], m [mins], s [secs]', { trim: 'both mid' })}\`\`\``)
     .setTimestamp(Date.now());
         return msg.edit('', embed);
+}
 };

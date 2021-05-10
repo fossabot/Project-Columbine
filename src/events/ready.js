@@ -44,8 +44,7 @@ module.exports = async client => {
       //Você pode colocar quantos quiser, porem vou adicionar apenas 3
       var avatars = [
           "https://hellpme.github.io/assets/apoios-github/CyberPlank_2077.jpg",
-          "https://hellpme.github.io/assets/apoios-github/TvKes.png",
-          "https://hellpme.github.io/assets/apoios-github/Nicaksks.jpg",
+          "https://hellpme.github.io/assets/apoios-github/TvKes.png"
       ];
 
       function setAvatars() {
@@ -56,14 +55,4 @@ module.exports = async client => {
       }
       setAvatars();
       setInterval(() => setAvatars(), 20 * 60000);
-
-        //Evento de enviar msg no servidor de suporte informando sobre o bot
-        if (client.config.support) {
-        var msga = `Bot iniciado com sucesso! ${client.user.tag} ${client.guilds.cache.reduce((total,guild) => total + guild.memberCount, 0)} usúarios, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.\n`
-        var channel = client.guilds.cache.get(client.config.supportserver.serverID).channels.cache.get(client.config.supportserver.serverChannel)
-        setInterval(function() {
-            channel.send(msga);
-        }, 1000 * 60 * 60 * 60);
-        channel.send(msga);
-    }
 }

@@ -1,14 +1,17 @@
-const { Client, Collection } = require('discord.js'),
-    Enmap = require('enmap');
+const { Client, Collection } = require('discord.js');
 
 module.exports = class PrCo extends Client {
     constructor(options) {
         super(options);
         //comand handler
-        this.commands = new Enmap();
+        this.commands = new Collection();
+        this.aliases = new Collection();
         this.cooldowns = new Collection();
-        //Configurando o arquivo da database
-        this.firebase = require('../database/db')
+
+        //Iniciando a database1
+        this.firebase = require('../database/firebase');
+        //Iniciando a database2
+        this.mongoose = require('../database/mongoose');
 
           //Arquivo config.js
           this.config = require('../config/config')

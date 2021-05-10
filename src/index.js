@@ -26,7 +26,7 @@ shard.on('shardCreate', async (shard) => {
 	// Webhook manager
 	await webhookClient.send({
 		username: 'Shard Manager',
-		avatarURL: 'https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg',
+		avatarURL: 'https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg', //imagem que você queira que apareça sobre os status da inicialização do shard
 		embeds: [shardEmbed],
 	});
 });
@@ -44,7 +44,7 @@ shard.on('message', async (shard, message) => {
 	// Webhook Manager
 	await webhookClient.send({
 		username: 'Shard Manager',
-		avatarURL: 'https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg',
+		avatarURL: 'https://i.ytimg.com/vi/3mp0DbLBNuM/maxresdefault.jpg',//aqui tambem
 		embeds: [shardOnEmbed],
 	});
 });

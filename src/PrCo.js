@@ -12,7 +12,7 @@ fs.readdir("./src/events/", (err, files) => {
       let eventName = file.split(".")[0];
       client.on(eventName, event.bind(null, client));
     });
-    console.log(chalk.green(`[+] Eventos Carregados!!`));
+    console.log(chalk.greenBright(`[+] Eventos Carregados!!`));
   });
 
 //Carregando as pastas de comandos
@@ -22,26 +22,30 @@ fs.readdir("./src/commands/", (err, dirs) => {
     fs.readdir(`./src/commands/${dir}/`, (err, files) => {
       files.forEach(file => {
         if (!file.endsWith(".js")) return;
-        let props = require(`./commands/${dir}/${file}`);
-        let commandName = file.split(".")[0];
-        client.commands.set(commandName, props);
+        let pull = require(`./commands/${dir}/${file}`);
+        client.commands.set(pull.name, pull)
+        pull.aliases.forEach(alias => {
+          client.aliases.set(alias, pull.name)
+        })
       });
     });
   });
   console.log(chalk.magenta("[-] Carregando Comandos..."));
-  console.log(chalk.green(`[+] Comandos Carregados!!`));
+  console.log(chalk.greenBright(`[+] Comandos Carregados!!`));
 });
-
 //Ligando o Player de Musica
 try {
     require('./base/Audio-Player')(client);
 } catch (e) {
   console.log(e)
 }
+//Iniciando a segunda DataBase
+client.mongoose.init(client);
+
 //Processo para ligar o bot
 const token = client.config.token;
 client.login(token).catch(e => console.log(e.message));
-
+/*
 process.on("rejectionHandled", (err) => {
   console.log(`rejectionHandled Error: ${err.message}`);
  
@@ -61,6 +65,6 @@ process.on('uncaughtException', err => {
   //Mostrar o erro com o debug ativo
   if (client.config.debug) console.log(err);
 });
-
+*/
 //Keep-alive.js para manter o bot 24/7 com auto ping externo
 //require('./keep-alive/keep-alive');

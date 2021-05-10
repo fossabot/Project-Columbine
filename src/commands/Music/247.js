@@ -1,4 +1,10 @@
-exports.run = async (client, message,) => {
+module.exports = {
+    name: '24/7',
+    aliases: ['247'],
+    category: 'Music',
+    description: 'Altere para o Player 24/7',
+
+    run: async (client, message, args) => {
 
 		// Check that a song is being played
 		const player = client.manager.players.get(message.guild.id);
@@ -15,4 +21,5 @@ exports.run = async (client, message,) => {
 			player.twentyFourSeven = true;
 			return message.channel.send('modo 24/7 online');
 		}
+	}
 };

@@ -25,11 +25,11 @@ const config = {
     defaultSettings: {
         prefix: 'prefix', //YouPrefix here
     },
-    //Aviso de iniciamento //Caso queira que o bot envie uma mensagem sempre que iniciar alterar de false para true
-    support: false,
+    //Mostrando o ping continuo do uptime do bot
+    PING_PORT: 65535,
+    //MongoDB URL
+    MongoDBURl: 'mongodb//url',
     //Para ajudar na correção de bugs!
     debug: false,
-    //Mostrando quando o bot foi iniciado
-    PING_PORT: 65535,
 }
 module.exports = config;

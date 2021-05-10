@@ -59,10 +59,10 @@ module.exports = async (client, message) => {
     }
     //Puxando os iniciadores dos comandos
     client.commandsUsed++;
-    if (client.config.debug) console.log(`Comando: ${cmd} foi usado por ${message.author.tag}${!message.guild ? '' : ` no servidor: ${message.guild.id}`}.`);
+    if (client.config.debug) console.log(`Comando: ${command} foi usado por ${message.author.tag}${!message.guild ? '' : ` no servidor: ${message.guild.id}`}.`);
     
     if (!message.content.startsWith(prefix) || message.author.bot) return;
-    let cmd = client.commands.get(command);
+    let cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
     if (cmd) {
         cmd.run(client, message, args);
         timestamps.set(message.author.id, now);

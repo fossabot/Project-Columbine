@@ -1,6 +1,12 @@
 //Puxando as Dependencias/Pastas/Arquivos nescessarios
 const { MessageEmbed } = require('discord.js');
-exports.run = async (client, message, args) => {
+module.exports = {
+    name: 'volume',
+    aliases: ['vol'],
+    category: 'Music',
+    description: 'Altere o Volume das Musica!',
+
+    run: async (client, message, args) => {
 /*   //Verificando se há o cargo de DJ no servidor
 if (message.guild.roles.cache.get('DJ')) {
 if (!message.member.roles.cache.has('DJ')) {
@@ -34,3 +40,4 @@ if (!message.member.roles.cache.has('DJ')) {
 			.setDescription(`Volume alterado para: ${args[0]}`, player.volume);
 		return message.channel.send(embed);
 	}
+};

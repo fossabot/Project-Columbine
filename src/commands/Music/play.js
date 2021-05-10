@@ -1,5 +1,11 @@
 //Puxando as Dependencias/Pastas/Arquivos nescessarios
-exports.run = async (client, message, args) => {
+module.exports = {
+	name: 'play',
+	aliases: ['p', 'pl'],
+	category: 'Music',
+	description: 'Coloque uma musica para tocar!',
+
+	run: async (client, message, args) => {
 	/*   //Verificando se há o cargo de DJ no servidor
     if (message.guild.roles.cache.get('DJ')) {
         if (!message.member.roles.cache.has('DJ')) {
@@ -96,6 +102,7 @@ exports.run = async (client, message, args) => {
 			player.play();
 		} else {
 			message.channel.send({ embed: { color: message.member.displayHexColor, description:`Added to queue: [${res.tracks[0].title}](${res.tracks[0].uri})` } });
+			}
 		}
 	}
-}
+};

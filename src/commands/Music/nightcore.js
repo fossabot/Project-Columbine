@@ -3,8 +3,14 @@ const { MessageEmbed } = require('discord.js'),
 	delay = ms => new Promise(res => setTimeout(res, ms))
 
 
-exports.run = async (client, message, args) => {
-    	/*   //Verificando se há o cargo de DJ no servidor
+	module.exports = {
+		name: 'nightcore',
+		aliases: ['ngt'],
+		category: 'Music',
+		description: 'Ative o modo NightCore nas musicas!',
+	
+		run: async (client, message, args) => {
+    /*   //Verificando se há o cargo de DJ no servidor
     if (message.guild.roles.cache.get('DJ')) {
         if (!message.member.roles.cache.has('DJ')) {
             return message.channel.send(`Você não tem o cargo de 'DJ' Para usar esses comandos!!`).then(m => m.delete({ timeout: 10000 }));
@@ -40,5 +46,6 @@ exports.run = async (client, message, args) => {
             .setDescription(`Modo '\`NightCore\`' ligado.`);
             await delay(7000);
             return msg.edit('', embed);
+        }
     }
-}
+};

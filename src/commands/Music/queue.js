@@ -37,7 +37,13 @@ function paginator(page, msg, queue, Currentposition) {
 		msg.edit(resp);
 	}
 }
-exports.run = async (client, message, args) => {
+module.exports = {
+	name: 'queue',
+	aliases: ['q'],
+	category: 'Music',
+	description: 'Veja as lista de musicas!',
+
+	run: async (client, message, args) => {
 
 //Puxando o prefixo do banco de dados
 let prefix = await db.ref(`Configurações/Servidores/${message.guild.id}/Prefixo`).once('value')
@@ -119,7 +125,8 @@ prefix = prefix.val().prefixo
 				// Mostrando as 10 primeiras musica NA FILA
 				page = 1;
 				paginator(page, msg, queue, player.position);
-			}
+				}
+			});
 		});
-	});
-}
+	}
+};

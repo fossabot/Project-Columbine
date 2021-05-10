@@ -1,8 +1,14 @@
 //Puxando as Dependencias/Pastas/Arquivos nescessarios
 const { MessageEmbed } = require('discord.js');
 
-exports.run = async (client, message, args) => {
-    	/*   //Verificando se há o cargo de DJ no servidor
+module.exports = {
+    name: 'shuffle',
+    aliases: ['shf'],
+    category: 'Music',
+    description: 'Embaralhe a lista de musica!!',
+
+    run: async (client, message, args) => {
+    /*   //Verificando se há o cargo de DJ no servidor
     if (message.guild.roles.cache.get('DJ')) {
         if (!message.member.roles.cache.has('DJ')) {
             return message.channel.send(`Você não tem o cargo de 'DJ' Para usar esses comandos!!`).then(m => m.delete({ timeout: 10000 }));
@@ -22,5 +28,5 @@ const embed = new MessageEmbed()
     .setColor(message.member.displayHexColor)
     .setDescription('Lista foi embaralhada')
     message.channel.send(embed)
+    }
 };
-

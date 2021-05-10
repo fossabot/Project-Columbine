@@ -22,7 +22,13 @@ function Page(page, msg, title, info) {
 	}
 }
 
-module.exports.run = async (client, message, args) => {
+module.exports = {
+	name: 'lyrics',
+	aliases: ['ly', 'letra'],
+	category: 'Music',
+	description: 'Veja a letra da musica tocando agora!',
+
+	run: async (client, message, args) => {
 	// Check that a song is being played
 	let options;
 	if (args.length == 0) {
@@ -100,5 +106,6 @@ module.exports.run = async (client, message, args) => {
 		console.log(err.message);
 		message.channel.send('ERROR_MESSAGE').then(m => m.delete({ timeout:1000 }));
 		wait.delete();
+		}
 	}
 };

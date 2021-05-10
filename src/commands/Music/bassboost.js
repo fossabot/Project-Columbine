@@ -2,8 +2,14 @@
 const { MessageEmbed } = require('discord.js'),
 	delay = ms => new Promise(res => setTimeout(res, ms));
 
-    exports.run = async (client, message, args) => {
-        	/*   //Verificando se há o cargo de DJ no servidor
+	module.exports = {
+		name: 'bassboost',
+		aliases: ['bass', 'bb'],
+		category: 'Music',
+		description: 'Altere o Grave das Musica!',
+	
+		run: async (client, message, args) => {
+    /*   //Verificando se há o cargo de DJ no servidor
     if (message.guild.roles.cache.get('DJ')) {
         if (!message.member.roles.cache.has('DJ')) {
             return message.channel.send(`Você não tem o cargo de 'DJ' Para usar esses comandos!!`).then(m => m.delete({ timeout: 10000 }));
@@ -56,4 +62,5 @@ const { MessageEmbed } = require('discord.js'),
 			.setDescription(`Bassboost Setado há: **${args[0]}dB**`);
 		await delay(7000);
 		return msg.edit('', embed);
-	};
+	}
+};
