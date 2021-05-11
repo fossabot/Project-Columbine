@@ -5,4 +5,4 @@ const fetch = require('node-fetch');
 //descomentando-o na index.js
 
 
-setInterval(() => fetch(`https://localhost:3000`), 5 * 60 * 1000);
+setInterval(() => fetch('https://project-columbine-v1.herokuapp.com'), 5 * 60 * 1000);

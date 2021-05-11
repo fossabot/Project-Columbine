@@ -45,7 +45,7 @@ client.mongoose.init(client);
 //Processo para ligar o bot
 const token = client.config.token;
 client.login(token).catch(e => console.log(e.message));
-/*
+
 process.on("rejectionHandled", (err) => {
   console.log(`rejectionHandled Error: ${err.message}`);
  
@@ -65,6 +65,6 @@ process.on('uncaughtException', err => {
   //Mostrar o erro com o debug ativo
   if (client.config.debug) console.log(err);
 })();
-*/
+
 //Keep-alive.js para manter o bot 24/7 com auto ping externo
-//require('./keep-alive/keep-alive');
+require('./keep-alive/keep-alive');
