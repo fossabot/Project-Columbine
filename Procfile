@@ -1,1 +1,1 @@
-heroku ps:restart worker: node .
+web: node .
