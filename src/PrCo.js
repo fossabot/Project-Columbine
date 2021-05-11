@@ -51,20 +51,20 @@ process.on("rejectionHandled", (err) => {
  
   //Mostrar o erro com o debug ativo
   if (client.config.debug) console.log(err);
-});
+})();
 //caso aconteça algum erro o bot não desligar
 process.on('unhandledRejection', err => {
   console.log(`unhandledRejection Error: ${err.message},`);
 
   //Mostrar o erro com o debug ativo
   if (client.config.debug) console.log(err);
-});
+})();
 process.on('uncaughtException', err => {
   console.log(`uncaughtException Error: ${err.message} `)
 
   //Mostrar o erro com o debug ativo
   if (client.config.debug) console.log(err);
-});
+})();
 */
 //Keep-alive.js para manter o bot 24/7 com auto ping externo
 //require('./keep-alive/keep-alive');

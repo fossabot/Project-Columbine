@@ -5,8 +5,8 @@ module.exports = class PrCo extends Client {
     constructor(options) {
         super(options);
         //comand handler
-        this.commands = new Collection();
         this.aliases = new Collection();
+        this.commands = new Collection();
         this.cooldowns = new Collection();
 
         //Iniciando a database1
@@ -14,17 +14,17 @@ module.exports = class PrCo extends Client {
         //Iniciando a database2
         this.mongoose = require('../database/mongoose');
 
-          //Arquivo config.js
-          this.config = require('../config/config')
-          this.webhooks = require('../config/webhooks')
+        //Arquivo config.js
+        this.config = require('../config/config')
+        this.webhooks = require('../config/webhooks')
 
-          //Atividade do bot
-          this.Activity = [];
-          this.PresenceType = 'PLAYING';
+        //Atividade do bot
+        this.Activity = [];
+        this.PresenceType = 'PLAYING';
           
-          //Estatisticas basica do bot
-          this.messagesSent = 0;
-          this.commandsUsed = 0;
+        //Estatisticas basica do bot
+        this.messagesSent = 0;
+        this.commandsUsed = 0;
     }
         //Quando bot entrar um servidor adicionar as configs
         async CreateGuild(settings) {

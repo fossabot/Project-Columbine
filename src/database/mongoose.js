@@ -15,13 +15,13 @@ module.exports = {
 		mongoose.set('useFindAndModify', false);
 		mongoose.Promise = global.Promise;
 		mongoose.connection.on('connected', () => {
-			console.log(chalk.greenBright('[DATABASE2] Conexão do Mongoose aberta com sucesso', 'ready'));
+			console.log(chalk.greenBright('[DATABASE1] Conexão do Mongoose aberta com sucesso', 'ready'));
 		});
 		mongoose.connection.on('err', (err) => {
-			console.log(chalk.redBright(`[DATABASE2] Erro de conexão do Mongoose: \n ${err.stack}`));
+			console.log(chalk.redBright(`[DATABASE1] Erro de conexão do Mongoose: \n ${err.stack}`));
 		});
 		mongoose.connection.on('disconnected', () => {
-			console.log(chalk.redBright('[DATABASE2] Desconectada'));
+			console.log(chalk.redBright('[DATABASE1] Desconectada'));
 		});
 	},
 	async ping() {

@@ -15,10 +15,10 @@ const firebase = {
 
 try {
   Firebase.initializeApp(firebase)
-  console.log(chalk.greenBright("[Banco de Dados Iniciado!!]"),)
+  console.log(chalk.greenBright("[DATABASE2] Banco de daddos Iniciado!"),)
 
 } catch (err) {
-  return console.log(chalk.yellowBright("[Banca de Dados Erro]"), `${err}`)
+  return console.log(chalk.yellowBright("[DATABASE2 Error]"), `${err}`)
 };
 
 module.exports = firebase;
