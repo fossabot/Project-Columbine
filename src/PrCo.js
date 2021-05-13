@@ -1,5 +1,6 @@
 //Puxando as dependencias..
 const Client = require('./base/PrCo.js')
+require('./structures');
 const fs = require('fs');
 const chalk = require('chalk');
 const client = new Client();
@@ -45,26 +46,24 @@ client.mongoose.init(client);
 //Processo para ligar o bot
 const token = client.config.token;
 client.login(token).catch(e => console.log(e.message));
-
+/*
 process.on("rejectionHandled", (err) => {
   console.log(`rejectionHandled Error: ${err.message}`);
  
   //Mostrar o erro com o debug ativo
   if (client.config.debug) console.log(err);
-})();
+});
 //caso aconteça algum erro o bot não desligar
 process.on('unhandledRejection', err => {
   console.log(`unhandledRejection Error: ${err.message},`);
 
   //Mostrar o erro com o debug ativo
   if (client.config.debug) console.log(err);
-})();
+});
 process.on('uncaughtException', err => {
   console.log(`uncaughtException Error: ${err.message} `)
 
   //Mostrar o erro com o debug ativo
   if (client.config.debug) console.log(err);
-})();
-
-//Keep-alive.js para manter o bot 24/7 com auto ping externo
-require('./keep-alive/keep-alive');
+});
+*/

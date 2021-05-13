@@ -10,9 +10,9 @@ module.exports = class PrCo extends Client {
         this.cooldowns = new Collection();
 
         //Iniciando a database1
-        this.firebase = require('../database/firebase');
-        //Iniciando a database2
         this.mongoose = require('../database/mongoose');
+        //Iniciando a database2
+        this.firebase = require('../database/firebase');
 
         //Arquivo config.js
         this.config = require('../config/config')
@@ -91,5 +91,16 @@ module.exports = class PrCo extends Client {
                 console.log(e);
             }
         }
-          
-    }
+    //para as traduções "adição futura"
+    translate(language, key, args) {
+		let languageFile;
+		if (key.includes('/')) {
+			const word = key.split('/');
+			languageFile = require(`../languages/${language}/${word[0]}/translation`);
+			return languageFile(word[1], args);
+		} else {
+			languageFile = require(`../languages/${language}/misc`);
+			return languageFile(key, args);
+		}
+	}
+}

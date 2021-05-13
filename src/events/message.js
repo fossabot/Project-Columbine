@@ -9,7 +9,10 @@ const { MessageEmbed, Collection } = require('discord.js'),
 module.exports = async (client, message) => {
     //recordando as msg que o bot enviar
     client.messagesSent++;
-    
+    //pegando as configs da mongodb
+    const settings = (message.guild) ? message.guild.settings : client.config.defaultSettings;
+    if (Object.keys(settings).length == 0) return;
+
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return message.channel.send({ embed:{ color: 'RANDOM', description:`Meus comandos podem ser usado apenas em servidores!` } }); 
     
@@ -64,7 +67,7 @@ module.exports = async (client, message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     let cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
     if (cmd) {
-        cmd.run(client, message, args);
+        cmd.run(client, message, args, settings);
         timestamps.set(message.author.id, now);
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
     } 

@@ -1,13 +1,13 @@
 const { Schema, model } = require('mongoose');
 
-const guildScheme = Schema({
+const guildSchema = Schema({
     //Armazenando nome e id do servidor/prefixo
 	guildID: String,
 	guildName: String,
     prefix: { type: String, default: '!' },
     //Infos basicas
     Language: { type: String, default: 'pt-BR' },
-    version: { type: Number, default: '1.0' },
+    version: { type: Number, default: '1.1' },
 
 });
-module.exports = model('Guild', guildScheme);
+module.exports = model('Guild', guildSchema);

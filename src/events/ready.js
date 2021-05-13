@@ -19,7 +19,7 @@ module.exports = async client => {
     //Iniciando servidor web
     try {
         require('../http/api')(client);
-        require('../http/webhook/dbl')(client);
+    //    require('../http/webhook/dbl')(client);
     } catch (e) {  
     console.log(e)
         }
@@ -59,6 +59,7 @@ module.exports = async client => {
 
     //verificando se adicionaram o bot enquanto ele estava offline
     client.guilds.cache.forEach(async item => {
+        await item.fetchGuildConfig();
         if (item.settings == null) {
     //Servidor novo encontrado
             client.emit('guildCreate', item);

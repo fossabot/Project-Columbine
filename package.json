@@ -39,7 +39,9 @@
     "mongoose": "^5.12.7",
     "node-fetch": "^2.6.1",
     "os-utils": "0.0.14",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "string-similarity": "^4.0.4",
+    "util": "^0.12.3"
   },
   "devDependencies": {
     "eslint": "^7.25.0"

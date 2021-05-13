@@ -10,6 +10,7 @@ module.exports = async (client, guild) => {
       guildName: guild.name,
     };
     await client.CreateGuild(newGuild);
+    await guild.fetchGuildConfig();
   } catch (err) {
     console.log(`Evento: 'GuildCreate' ocorreu o seguinte erro: ${err.message}.`);
   }
