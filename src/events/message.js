@@ -13,8 +13,8 @@ module.exports = async (client, message) => {
     const settings = (message.guild) ? message.guild.settings : client.config.defaultSettings;
     if (Object.keys(settings).length == 0) return;
 
-    if(message.author.bot) return;
-    if(message.channel.type === 'dm') return message.channel.send({ embed:{ color: 'RANDOM', description:`Meus comandos podem ser usado apenas em servidores!` } }); 
+    if (message.author.bot) return;
+    if (message.channel.type === 'dm') return message.channel.send(client.translate(settings.Language, 'EVENTS/GUILD_COMMAND_ERROR')); 
     
     //Puxando do banco de dados o prefixo!
     let prefix = await db.ref(`Configurações/Servidores/${message.guild.id}/Prefixo`).once('value')
@@ -56,8 +56,7 @@ module.exports = async (client, message) => {
             
         if (now < expirationTime) {
             const timeleft = (expirationTime - now) / 1000
-            let timeleft2 = timeleft.toFixed(1)
-            return message.channel.send({ embed: { color: message.member.displayHexColor, description:`Você deve esperar ${timeleft2} segundos, para usar o comando novamente!!`}}).then(m => m.delete({ timeout:4000 }));
+            return message.channel.send(client.translate(settings.Language,'EVENTS/COMMAND_COOLDOWN', timeleft.toFixed(1))).then(m => m.delete({ timeout:4000 }));
         }
     }
     //Puxando os iniciadores dos comandos

@@ -1,6 +1,3 @@
-//Puxando as dependencias/arquivos/pastas nescessarias
-const firebase = require('firebase')
-const db = firebase.database()
 //Criando as paginas
 function paginator(page, msg, queue, Currentposition) {
 	if (page == 1) {
@@ -15,7 +12,7 @@ function paginator(page, msg, queue, Currentposition) {
 			}
 		}
 		if (queue.length < 10) {
-			resp += `\n\tA lista encerrou-se\n\tUse ${prefix}play para adicionar mais musicas a fila!!>,<\n`;
+			resp += `\n\tA lista encerrou-se\n\tUse ${settings.prefix}play para adicionar mais musicas a fila!!>,<\n`;
 		}
 		resp += '```';
 		msg.edit(resp);
@@ -29,7 +26,7 @@ function paginator(page, msg, queue, Currentposition) {
 				resp += `${i}) ${queue[i].title} ${new Date(queue[i].duration).toISOString().slice(14, 19)}\n`;
 			} else if (!end) {
 				//Enviando mesangem de todas as musicas encontradas
-				resp += `\n\tA lista encerrou-se\n\tUse ${prefix}play para adicionar mais musicas a fila!!>,<\n`;
+				resp += `\n\tA lista encerrou-se\n\tUse ${settings.prefix}play para adicionar mais musicas a fila!!>,<\n`;
 				end = true;
 			}
 		}
@@ -43,31 +40,27 @@ module.exports = {
 	category: 'Music',
 	description: 'Veja as lista de musicas!',
 
-	run: async (client, message, args) => {
+	run: async (client, message, args, settings) => {
 
-//Puxando o prefixo do banco de dados
-let prefix = await db.ref(`Configurações/Servidores/${message.guild.id}/Prefixo`).once('value')
-prefix = prefix.val().prefixo
-
- /*   //Verificando se há o cargo de DJ no servidor
-    if (message.guild.roles.cache.get('DJ')) {
-        if (!message.member.roles.cache.has('DJ')) {
-            return message.channel.send(`Você não tem o cargo de 'DJ' Para usar esses comandos!!`).then(m => m.delete({ timeout: 10000 }));
-        }
-    } */
-	//Vericando se há musicas na fila do servidor
-	const player = client.manager.players.get(message.guild.id);
-	if (!player) return message.channel.send(`Atualmente não há músicas tocando neste servidor.`).then(m => m.delete({ timeout: 5000 }));
+       //Verificando se há o cargo de DJ no servidor
+	   if (message.guild.roles.cache.get(settings.MusicDJRole)) {
+		if (!message.member.roles.cache.has(settings.MusicDJRole)) {
+			return message.channel.error(settings.Language, 'MUSIC/MISSING_DJROLE').then(m => m.delete({ timeout: 10000 }));
+		}
+	}
+    //Verificando se há musicas na fila/Reproduzidas
+    const player = client.manager.players.get(message.guild.id);
+    if (!player) return message.channel.send(client.translate(settings.Language, 'MUSIC/NO_QUEUE').then(m => m.delete({ timeout: 5000 })));
 
 	//Verificando se o bot tem permissões para adicionar Reações
 	if (!message.channel.permissionsFor(message.guild.me).has('ADD_REACTIONS')) {
 		console.log(`Missing permission: \`ADD_REACTIONS\` no servidor [${message.guild.id}].`);
-		return message.channel.send(`Nescessito da permissão '\`ADD_REACTIONS\`' para enviar este comando`).then(m => m.delete({ timeout: 10000 }));
+		return message.channel.send(client.translate(settings.Language, 'MISSING_PERMISSION', 'ADD_REACTIONS').then(m => m.delete({ timeout: 10000 })));
 	}
 	//Verificando se o bot tem permissões para apagar emoji
 	if (!message.channel.permissionsFor(message.guild.me).has('MANAGE_MESSAGES')) {
 		console.log(`Missing permission: \`MANAGE_MESSAGES\` no servidor [${message.guild.id}].`);
-		return message.channel.send(`Nescessito da permissão '\`MANAGE_MESSAGES\`' para enviar esse comando`).then(m => m.delete({ timeout: 10000 }));
+		return message.channel.send(client.translate(settings.Language, 'MISSING_PERMISSION', 'MANAGE_MESSAGES').then(m => m.delete({ timeout: 10000 })));
 	}
 	//Pegando a lista de musica
 	const queue = player.queue;
@@ -86,7 +79,7 @@ prefix = prefix.val().prefixo
 		}
 	}
 	if (queue.length < 10) {
-		resp += `\n\tA fila encerrou-se\n\tUse ${prefix}play para adicionar mais musicas a fila!!>,<\n`;
+		resp += `\n\tA fila encerrou-se\n\tUse ${settings.prefix}play para adicionar mais musicas a fila!!>,<\n`;
 	}
 	resp += '```';
 	//Mensagens do DISPLAY

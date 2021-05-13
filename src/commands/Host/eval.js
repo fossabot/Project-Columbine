@@ -7,9 +7,9 @@ module.exports = {
     category: 'Host',
     description: 'Eval?',
 
-    run: async (client, message, args) => {
+    run: async (client, message, args, settings) => {
         if (!client.config.ownerID.includes(message.author.id)) {
-            return message.channel.send(`apenas meu desenvolvedor pode utilizar`)
+            return message.channel.send(client.translate(settings.Language, 'HOST/EVAL_NO_OWNER'))
             }
             let code = args.slice(0).join(" ");
             

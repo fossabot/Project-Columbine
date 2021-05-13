@@ -8,7 +8,10 @@ module.exports = {
     category: 'Host',
     description: 'Veja as informações do Servidor Lavalink!',
     
-run: async (client, message, args) => {
+run: async (client, message, args, settings) => {
+    if (!client.config.ownerID.includes(message.author.id)) {
+        return message.channel.send(client.translate(settings.Language, 'HOST/EVAL_NO_OWNER'))
+        }
     const msg = await message.channel.send('Puxando todas as informações do lavalink, aguarde..');
 
     const {	memory,	cpu,	uptime,	playingPlayers,	players } = client.manager.nodes.first().stats;

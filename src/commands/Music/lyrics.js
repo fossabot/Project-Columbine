@@ -28,13 +28,13 @@ module.exports = {
 	category: 'Music',
 	description: 'Veja a letra da musica tocando agora!',
 
-	run: async (client, message, args) => {
+	run: async (client, message, args, settings) => {
 	// Check that a song is being played
 	let options;
 	if (args.length == 0) {
 		// Check if a song is playing and use that song
 		const player = client.manager.players.get(message.guild.id);
-		if (!player) return message.channel.send('MUSIC/NO_QUEUE').then(m => m.delete({ timeout: 5000 }));
+		if (!player) return message.channel.send(client.translate(settings.Language, 'MUSIC/NO_QUEUE').then(m => m.delete({ timeout: 5000 })));
 		options = {
 			apiKey: client.config.api_keys.genius,
 			title: player.queue.current.title,
@@ -68,13 +68,13 @@ module.exports = {
 			// Check if bot has permission to connect to voice channel
 			if (!message.channel.permissionsFor(message.guild.me).has('ADD_REACTIONS')) {
 			//	bot.logger.error(`Missing permission: \`ADD_REACTIONS\` in [${message.guild.id}].`);
-				return message.error(settings.Language, 'MISSING_PERMISSION', 'ADD_REACTIONS').then(m => m.delete({ timeout: 10000 }));
+				return message.error(client.translate(settings.Language, 'MISSING_PERMISSION', 'ADD_REACTIONS').then(m => m.delete({ timeout: 10000 })));
 			}
 
 			// Check if bot has permission to delete emojis
 			if (!message.channel.permissionsFor(message.guild.me).has('MANAGE_MESSAGES')) {
 			//	bot.logger.error(`Missing permission: \`MANAGE_MESSAGES\` in [${message.guild.id}].`);
-				return message.error(settings.Language, 'MISSING_PERMISSION', 'MANAGE_MESSAGES').then(m => m.delete({ timeout: 10000 }));
+				return message.error(client.translate(settings.Language, 'MISSING_PERMISSION', 'MANAGE_MESSAGES').then(m => m.delete({ timeout: 10000 })));
 			}
 
 			// send reactions so user can see more lyrcis
@@ -104,7 +104,7 @@ module.exports = {
 		wait.delete();
 	} catch (err) {
 		console.log(err.message);
-		message.channel.send('ERROR_MESSAGE').then(m => m.delete({ timeout:1000 }));
+		message.channel.send(client.translate(settings.Language, 'ERROR_MESSAGE').then(m => m.delete({ timeout:1000 })));
 		wait.delete();
 		}
 	}
