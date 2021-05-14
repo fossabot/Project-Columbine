@@ -11,8 +11,6 @@ const config = {
         },
         genius: 'genius lyrics api here', //https://genius.com/api-clients
     },
-    //Habilita/Desabilita o plugin ant-raid/self-bot
-    AntRaidPlugin: false,
 
     DiscordBotLists: {
         DBL_key: '',
@@ -23,7 +21,8 @@ const config = {
         serverChannel: ''
     },
     defaultSettings: {
-        prefix: 'prefix', //YouPrefix here
+        prefix: '!', //YouPrefix here
+        Language: 'pt-Br', //you lang here
     },
     //Mostrando o ping continuo do uptime do bot
     PING_PORT: 65535,
