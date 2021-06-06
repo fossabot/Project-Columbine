@@ -5,5 +5,3 @@ src/database/db.js
 src/config/webhooks.js
 src/config/dashboarsettings.js
 dashboard/
-Dockerfile/
-.dockerignore/
