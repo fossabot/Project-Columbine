@@ -9,5 +9,5 @@ COPY . .
 
 EXPOSE 3000
 
-#Caso queira startar o modulo de musica "Lavalink" adicionar dentro dos colchetes "npm", "run", "start:music" 
+#Caso queira startar o modulo de musica "Lavalink" adicionar dentro dos colchetes ["npm", "run", "start:music"]
 CMD ["npm", "start"]
