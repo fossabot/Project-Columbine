@@ -1,4 +1,6 @@
 # Project-Columbine Bot, Discord bot MultiLanguage
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHellpMe%2FProject-Columbine.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FHellpMe%2FProject-Columbine?ref=badge_shield)
+
 
 <p align="center">
   <a href="#1º--introdução">About</a>
@@ -35,3 +37,7 @@ Caso queira fazer Self-Host do projeto iremos precisar dos seguintes recursos.
         <td align="center"><a href="https://github.com/vSilva-gb"><img src="https://hellpme.github.io/assets/apoios-github/vSilva-gb.png"alt=""/><br /><sub><b>vSilva-gb</b></sub></a><br /><a href="#support-vSilva-gb" title="Bug Hunter">🆘</a></td>
   </tr>
 </table>
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHellpMe%2FProject-Columbine.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHellpMe%2FProject-Columbine?ref=badge_large)
